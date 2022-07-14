@@ -5,6 +5,7 @@ import "./Dashboard.css";
 import { auth, db, logout } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Game from "./Game";
 
 function Dashboard() {
   const [user, loading] = useAuthState(auth);
@@ -15,7 +16,7 @@ function Dashboard() {
     try {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
       const doc = await getDocs(q);
-      const data = doc?.docs[0]?.data();
+      const data = doc.docs[0]?.data();
       setName(data?.name);
     } catch (err) {
       console.error(err);
@@ -34,14 +35,18 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <div className="dashboard__container">
-        <div className="provider">{user?.providerId}</div>
-        <h4>Verified User As</h4>
-        <div style={{ color: "green" }}>
-          <h3>User-ID: {user?.uid}</h3>
-        </div>
+        <h2>Tic-Tac-Toe Game App</h2>
         <div className="details">
-          <div>Display Name: {name}</div>
+          <div style={{ color: "green" }}>
+            <h3>
+              User-ID:<b>{user?.uid}</b>
+            </h3>
+          </div>
+          <div>Name: {name}</div>
           <div>Email Address: {user?.email}</div>
+        </div>
+        <div className="game">
+          <Game />
         </div>
         <button className="dashboard__btn" onClick={logout}>
           Logout

@@ -1,5 +1,12 @@
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
 .login {
-  height: 95vh;
+  height: ;
   width: ;
   display: flex;
   align-items: center;
