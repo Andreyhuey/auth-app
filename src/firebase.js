@@ -56,6 +56,7 @@ const signInWithGoogle = async () => {
         authProvider: "google",
         email: user.email,
       });
+      window.location.reload();
     }
   } catch (err) {
     console.log(err);
@@ -76,6 +77,7 @@ const signInWithGithub = async () => {
         authProvider: "github",
         email: user.email,
       });
+      window.location.reload();
     }
   } catch (err) {
     console.log(err);
