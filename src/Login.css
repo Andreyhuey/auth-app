@@ -1,0 +1,67 @@
+.login {
+  height: 95vh;
+  width: ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login__container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #dcdcdc;
+  padding: 30px;
+}
+.login__textBox {
+  /* display: flex; */
+  /* justify-content: space-between; */
+  padding: 12px;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+/* .password {
+  display: grid;
+  position:relative
+  padding: 12px;
+  margin-left: 18px;
+  margin-right: 18px;
+} */
+
+.login__btn {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border: 5px;
+  border-radius: 5px;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+.login__google {
+  background-color: #4285f4;
+}
+
+.login__github {
+  background-color: black;
+}
+
+.login div {
+  margin-top: 7px;
+}
+
+.beta {
+  padding: 7px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.icon {
+  padding-right: 5px;
+}
+
+.eye {
+  /* right: 5px; */
+  cursor: pointer;
+  padding: 20px;
+}

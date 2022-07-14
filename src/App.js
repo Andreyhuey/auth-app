@@ -1,94 +1,52 @@
-import { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Dashboard from "./Dashboard";
+import Login from "./Login";
+import Register from "./Register";
+import Reset from "./Reset";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
 import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
-import { auth } from "./firebase-config";
+  fas,
+  faRightToBracket,
+  faRightFromBracket,
+  faUserPlus,
+  faPaperPlane,
+  faEye,
+  faEyeSlash,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+  faFontAwesome,
+  faGithub,
+  faGoogle,
+} from "@fortawesome/free-brands-svg-icons";
 
-function App() {
-  const [registerEmail, setRegisterEmail] = useState("");
-  const [registerPassword, setRegisterPassword] = useState("");
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  const [user, setUser] = useState({});
+library.add(
+  fas,
+  faRightToBracket,
+  faRightFromBracket,
+  faGithub,
+  faGoogle,
+  faFontAwesome,
+  faUserPlus,
+  faPaperPlane,
+  faEye,
+  faEyeSlash
+);
 
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
-
-  const register = async () => {
-    try {
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPassword
-      );
-      console.log(user);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  const login = async () => {
-    try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
-      console.log(user);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  const logout = async () => {
-    await signOut(auth);
-  };
-
+const App = () => {
   return (
-    <div className="App">
-      <div>
-        <h3>Register User</h3>
-        <input
-          placeholder="Email..."
-          onChange={(event) => {
-            setRegisterEmail(event.target.value);
-          }}
-        />
-        <input
-          placeholder="Password..."
-          onChange={(event) => {
-            setRegisterPassword(event.target.value);
-          }}
-        />
-        <button onClick={register}>Create User</button>
-      </div>
-      <div>
-        <h1>Sign-In User</h1>
-        <input
-          placeholder="Email..."
-          onChange={(event) => {
-            setLoginEmail(event.target.value);
-          }}
-        />
-        <input
-          placeholder="Password..."
-          onChange={(event) => {
-            setLoginPassword(event.target.value);
-          }}
-        />
-        <button onClick={login}>Sign-In</button>
-      </div>
-      <div>
-        <h2>User Logged In: </h2>
-        {user?.email}
-        <button onClick={logout}>Sign out</button>
-      </div>
+    <div>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Login />} />
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/reset" element={<Reset />} />
+          <Route exact path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
