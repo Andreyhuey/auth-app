@@ -31,7 +31,9 @@ function Dashboard() {
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/");
+
     fetchUserName();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, loading]);
 
   return (
