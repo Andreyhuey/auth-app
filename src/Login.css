@@ -17,7 +17,8 @@
   flex-direction: column;
   text-align: center;
   background-color: #dcdcdc;
-  padding: 30px;
+  padding: 45px;
+  border-radius: 18px;
 }
 .login__textBox {
   /* display: flex; */

@@ -4,6 +4,7 @@ import Dashboard from "./Dashboard";
 import Login from "./Login";
 import Register from "./Register";
 import Reset from "./Reset";
+import "./App.css";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {

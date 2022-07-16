@@ -6,6 +6,7 @@ import { auth, db, logout } from "./firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Game from "./Game";
+import Loader from "./Loader";
 
 function Dashboard() {
   const [user, loading] = useAuthState(auth);
@@ -18,6 +19,7 @@ function Dashboard() {
       const doc = await getDocs(q);
       const data = doc.docs[0]?.data();
       setName(data?.name);
+      if (!data?.name) return <Loader />;
     } catch (err) {
       console.error(err);
       alert(
@@ -38,12 +40,12 @@ function Dashboard() {
         <h2>Tic-Tac-Toe Game App</h2>
         <div className="details">
           <div style={{ color: "green" }}>
-            <h3>
-              User-ID:<b>{user?.uid}</b>
-            </h3>
+            <h4>
+              User-ID:<b> {user?.uid}</b>
+            </h4>
           </div>
           <div>Name: {name}</div>
-          <div>Email Address: {user?.email}</div>
+          <div>Email: {user?.email}</div>
         </div>
         <div className="game">
           <Game />

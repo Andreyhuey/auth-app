@@ -27,16 +27,16 @@ function Login() {
 
   return (
     <div>
-      <h2 className="heading">Tic-Tac-Toe Game App</h2>
+      <h2 className="heading">Tic-Tac-Toe App</h2>
       <div className="login">
         <div className="login__container">
-          <div className="beta">
+          <div className="auth-sign">
             <button
               className="login__btn login__google beta"
               onClick={signInWithGoogle}
             >
               <FontAwesomeIcon icon="fa-brands fa-google" className="icon" />
-              Login with Google
+              google login
             </button>
 
             <button
@@ -44,7 +44,7 @@ function Login() {
               onClick={signInWithGithub}
             >
               <FontAwesomeIcon icon="fa-brands fa-github" className="icon" />
-              Login with Github
+              github login
             </button>
           </div>
           <input
